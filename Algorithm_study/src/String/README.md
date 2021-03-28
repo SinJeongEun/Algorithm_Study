@@ -10,8 +10,8 @@ String s = "a(dg))(";
 for(char c : s.toCharArray()){}
 ```
 
-- [**IndexOf()**] (https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/String/SubString_IndexOf.java) : 문자의 위치를 리턴
+- [**IndexOf()**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/String/SubString_IndexOf.java) : 문자의 위치를 리턴
 
-- [**subString(i,j)**] (https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/String/SubString_IndexOf.java) : i번째 부터 j 전까지 리턴
+- [**subString(i,j)**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/String/SubString_IndexOf.java) : i번째 부터 j 전까지 리턴
 
 - Palindrome
