@@ -14,4 +14,4 @@ for(char c : s.toCharArray()){}
 
 - [**subString(i,j)**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/String/SubString_IndexOf.java) : i번째 부터 j 전까지 리턴
 
-- [**Palindrome**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/String/Palindrom.java) : 한 index기준 좌우 값이 같은경우의 최대 경우 
+- [**Palindrome**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/String/Palindrom.java) : 한 index기준 좌우 값이 같은경우의 최대 경우  //주석부분 공부 더 
