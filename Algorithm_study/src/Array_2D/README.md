@@ -1,1 +1,5 @@
-
+- # [**2D_Array <=> List<List<Integer>>**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/Array_2D/Convert_2DArray_List.java)
+  -   ## 2D_Array -> List<List<Integer>>
+    -  각 내부 리스트 먼저 생성후 2차원 리스트에 add
+  -  ## List<List<Integer>> ->  2D_Array
+    - 2차원 배열의 구조 먼저 정의해애됨**! 행먼저 크기 정하고, 각 행마다 column 수 다를 수 있으니 for 문으로 list.get(i).size 사용하여 column 크기 정한다.
