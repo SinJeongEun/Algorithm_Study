@@ -4,7 +4,7 @@
   -  ## List<List<Integer>> ->  2D_Array
      - 2차원 배열의 구조 먼저 정의해애됨**! 행먼저 크기 정하고, 각 행마다 column 수 다를 수 있으니 for 문으로 list.get(i).size 사용하여 column 크기 정한다.
 
-- #[**해당 행,열 0으로 만들기**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/Array_2D/MatrixZero.java)
+- # [**해당 행,열 0으로 만들기**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/Array_2D/MatrixZero.java)
    -HashSet 사용하여 0이되어야 하는 행 , 열의 주소를 각각 저장함
     - HashSet은 Set의 성질을 그대로 상속받습니다. 
     - Set은 객체를 **중복해서 저장할 수 없고** 하나의 null 값만 저장할 수 있습니다.
