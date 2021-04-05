@@ -17,7 +17,7 @@
 while(iter.hasNext()) {//값이 있으면 true 없으면 false
     System.out.println(iter.next());
 } ```
-      - Set에는 인덱스로 객체를 가져오는 get(index) 메소드가 없고, 전체 객체를 대상으로 한 번씩 반복해서 가져오는 반복자(Iterator)를 제공함
+     - Set에는 인덱스로 객체를 가져오는 get(index) 메소드가 없고, 전체 객체를 대상으로 한 번씩 반복해서 가져오는 반복자(Iterator)를 제공함
        
 
  
