@@ -17,6 +17,7 @@ public class MatrixZero {
 		Set<Integer> rowSet = new HashSet<>();
 		Set<Integer> colSet = new HashSet<>();
 		
+		//0ì´ ë“¤ì–´ìˆëŠ” ì¢Œí‘œê°’ ì €ì¥
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
 				if(grid[i][j] == 0) {
@@ -26,7 +27,7 @@ public class MatrixZero {
 			}
 		}
 		
-		//ÇØ´ç ÇÏ´Â ºÎºĞ 0À¸·Î ¸¸µé±â		
+		//í•´ë‹¹ í•˜ëŠ” ë¶€ë¶„ 0ìœ¼ë¡œ ë§Œë“¤ê¸°		
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
 				if(rowSet.contains(i) || colSet.contains(j)) {
