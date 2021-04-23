@@ -42,6 +42,12 @@
         	Systemm.out.println("key:" + key + "value:" + 				map.get(key));
         }
         ```
+  - 함수
+    +  ```java
+     map.put(ch, map.getOrDefault(ch, 0)+1);
+       ```
+      - ch가 존재하면 ch의 기존값을 가져온다.
+			- ch가 존재하지 않으면 0을 가져온다.
 
         
 
