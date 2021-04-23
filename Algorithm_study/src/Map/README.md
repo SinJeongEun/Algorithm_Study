@@ -44,9 +44,9 @@
         ```
   - 함수
     - [**getOrDefault**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/Map/MapGetOrDefault.java)
-       + ```java
-        map.put(ch, map.getOrDefault(ch, 0)+1);
-        ```
+     + ```java
+       map.put(ch, map.getOrDefault(ch, 0)+1);
+       ```
         - ch가 존재하면 ch의 기존값을 가져온다.
         - ch가 존재하지 않으면 0을 가져온다.
 
