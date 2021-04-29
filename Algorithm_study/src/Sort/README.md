@@ -3,7 +3,7 @@
 - ## CompareTo()
 
   -  ```java
-    ppublic int compareTo(){
+    public int compareTo(){
     	 return A.compareTo(b);
     }
     // 1. A = B -> 0
