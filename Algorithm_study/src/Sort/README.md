@@ -1,14 +1,14 @@
 # Sort
 
-- ## CompareTo()
+- ## [**CompareTo()**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/Sort/CompareTo.java)
 
   + ```java
-        I public int compareTo(){
+        public int compareTo(){
     	 return A.compareTo(b);
-    }
-    // 1. A = B -> 0
-    // 2. A > B -> 1     내림차순
-    // 3. A < B -> -1    오름차순
+        }
+        // 1. A = B -> 0
+        // 2. A > B -> 1     내림차순
+        // 3. A < B -> -1    오름차순
         ```
 
     
