@@ -2,14 +2,14 @@
 
 - ## CompareTo()
 
-  -  ```java
-    public int compareTo(){
+  + ```java
+        I public int compareTo(){
     	 return A.compareTo(b);
     }
     // 1. A = B -> 0
     // 2. A > B -> 1     내림차순
     // 3. A < B -> -1    오름차순
-     ```
+        ```
 
     
 
