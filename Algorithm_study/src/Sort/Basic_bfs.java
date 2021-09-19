@@ -55,7 +55,7 @@ public class Basic_bfs {
 					for(char[] a : grid) {
 						System.out.println(a);
 					}
-					System.out.println("-------------------------------------");
+					System.out.println("-----------------------------------");
 				}
 			}
 		}
