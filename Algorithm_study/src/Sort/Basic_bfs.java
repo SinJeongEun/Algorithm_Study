@@ -33,14 +33,15 @@ public class Basic_bfs {
 				}
 			}
 		}
-		return count;
-	
+		return count;	
 	}
 	
 	public void bfs(char[][] grid, int x, int y) {
+		grid[x][y] = 'X'; // visited 의미
 		Queue<int[]> queue = new LinkedList<>();
-		queue.offer(new int[] {x, y}); //0,0
+		queue.offer(new int[] {x, y}); //0,0을 큐에 삽입
 		
+	
 		while(!queue.isEmpty()) {
 			int [] point = queue.poll();
 			
@@ -49,10 +50,15 @@ public class Basic_bfs {
 				int y1 = point[1] + dir[1];
 				
 				if(x1>=0 && y1>=0 && m>x1 && n>y1 && grid[x1][y1] =='1') {
-					grid[x1][y1] = '0';
+					grid[x1][y1] = 'X';
 					queue.offer(new int[] {x1, y1});
+					for(char[] a : grid) {
+						System.out.println(a);
+					}
+					System.out.println("-------------------------------------");
 				}
 			}
 		}
+		
 	}
 }
