@@ -1,7 +1,9 @@
-package Sort;
+package bfs_dfs;
 
 public class Dfs_memoization {
-
+	// 정수이고, matrix내에서 값이 증가하면서 가장 긴 경우의 경로를 반환하세요
+//	각 셀에서 사방(왼쪽, 오른쪽, 윗쪽, 아래쪽)으로 할 수 있습니다.
+//	값이 같은 경우는 제외합니다.
 	public static void main(String[] args) {
 		int[][] grid = {
 				{9, 8, 3},
@@ -26,8 +28,14 @@ public class Dfs_memoization {
 				int len = dfs(matrix, i, j, m, n, result);
 				max = Math.max(max, len);
 			}
-			System.out.println();
+			
 		}
+		for(int[]a : result) {
+			for(int b : a) {
+				System.out.print(b);
+			}
+		}
+		System.out.println();
 		return max;
 	}
 	
@@ -36,12 +44,13 @@ public class Dfs_memoization {
 		int max = 1;
 		for(int[] dir : dirs) {
 			int x = i + dir[0];
-			int y = i + dir[1];
+			int y = j + dir[1];
 			if(x < 0 || x >=m || y<0 || y >= n || matrix[x][y] <= matrix[i][j]) continue;
 			
-			int len = i + dfs(matrix, x, y, m, n, result);
-			max = Math.max(max, len);
-			
+			System.out.println("x: " + x + " y: " + y);
+			System.out.println(result[x][y]);
+			int len = 1 + dfs(matrix, x, y, m, n, result);
+			max = Math.max(max, len);			
 		}
 		result[i][j] = max;
 		return max;

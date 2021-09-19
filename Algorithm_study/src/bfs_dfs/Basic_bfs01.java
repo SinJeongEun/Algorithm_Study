@@ -1,4 +1,4 @@
-package Sort;
+package bfs_dfs;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
