@@ -2,6 +2,7 @@ package bfs_dfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class Basic_dfs {
  //dfs ´Â Àç±ÍÀû , stack
@@ -17,7 +18,7 @@ public class Basic_dfs {
 		System.out.println(a.dfs(grid));
 	}
 
-	int m, n = 0;
+	int m, n = 0; 
 	int[][]dirs = {{1,0},{-1,0},{0,1},{0,-1}};
 	public int dfs(char[][]grid) {
 		if(grid == null || grid.length == 0) return 0;
@@ -44,15 +45,36 @@ public class Basic_dfs {
 		
 		grid[i][j] = 'X';
 		
-		for(char[] a : grid) {
-			System.out.println(a);
-		}
-		System.out.println("-------------------------------------");
-
-		for(int[]dir : dirs) {
-			dfs(grid, i+dir[0], j+dir[1]);
-		}
+		Stack<int[]> stack = new Stack<>();
+		stack.push(new int[] {i,j});
 		
+		while(!stack.isEmpty()) {
+			int point[] = stack.pop();
+			for(int[]dir : dirs) {
+				int x1 = point[0] + dir[0];
+				int y1 = point[1] + dir[1];
+				
+				if(x1>=0 && y1>=0 && m>x1 && n>y1 && grid[x1][y1] =='1') {
+					grid[x1][y1] = 'X';
+					stack.push(new int[] {x1, y1});
+					for(char[] a : grid) {
+						System.out.println(a);
+					}
+					System.out.println("--------------------------------");
+				}
+			}
+		}
+			
+			
+//		for(char[] a : grid) {
+//			System.out.println(a);
+//		}
+//		System.out.println("-------------------------------------");
+//
+//		for(int[]dir : dirs) {
+//			dfs(grid, i+dir[0], j+dir[1]);
+//		}
+//		
 	}
 }
 
