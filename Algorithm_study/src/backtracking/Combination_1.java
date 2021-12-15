@@ -27,7 +27,7 @@ public class Combination_1 {
 				tempList.add(i);
 //				System.out.println(tempList);
 				backtrack(result,tempList,nums,k,i+1);
-//				System.out.println("========================================");
+//				System.out.println("======================================");
 				tempList.remove(tempList.size()-1);
 //				System.out.println("---->" + tempList);
 
