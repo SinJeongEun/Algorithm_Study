@@ -29,7 +29,6 @@ public class Permutation_1 {
 				backtrack(result,tempList,nums);
 				tempList.remove(tempList.size()-1);
 			}			
-		}
-		
+		}	
 	}	
 }
