@@ -28,3 +28,22 @@
 
 - ## combination
   + 조합 ( nCr)
+  +  ``` java
+      List<List<Integer>> result = new ArrayList<>();
+      List<Integer> tmp = new ArrayList<>();
+
+      backtrack(); //함수 호출 매개변수에 start=1
+
+      //nums=3 k=2인 경우 조합 가능한 경우의 수 (3C2)
+      public void backtrack(){
+          if(tmp.size() == k){
+              result.add(new ArrayList<>(tmp))
+          }else{
+              for(int i=start;i<=nums;i++){
+                  tmp.add(nums[i]);
+                  backtrack(~,i+1); //다음 start 수를 +1로 지정 
+                  tmp.remove(tmp.size()-1); // **********이 부분 정확한 이유 공부 후 설명 보충하기
+              }
+          }
+      }
+    ```
