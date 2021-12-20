@@ -7,7 +7,7 @@ import java.util.Queue;
 
 
 public class CountCompletedProgresses {
-	//프로그래머스 .스택/큐.기능개발 알고리즘 풀이..
+	//프로그래머스 .스택/큐.기능개발 알고리즘 풀이...
 	public static void main(String[] args) {
 		int progresses[] = {93,30,55};
 		int speeds[] = {1,30,5};
