@@ -27,39 +27,32 @@ public class Bridge {
         int total = 0; 
         int start = 0;
         int now_weight = 0;
+        final int truck_total = truck_weights.length;
         Queue<Truck> bridge = new LinkedList<>();
         
-        bridge.offer(new Truck((truck_weights[start]),0));
-        total++;
+        bridge.offer(new Truck((truck_weights[start]),1));
         now_weight += truck_weights[start];
         while(!bridge.isEmpty()) {
-        	while(bridge.peek().count < bridge_length) {
-        		System.out.println("11111111111  "+ bridge.peek().t_weigth );
-        		System.out.println("~~~~~~~~~~~~~~~~~~~~~~" + bridge.peek().count);
+        	while(bridge.peek().count <= bridge_length) {
+        		bridge.forEach(t->t.count++);
+    			total++;      			
         		
-    			bridge.peek().count++;
-    			total++;        	
-        		
-        		if(now_weight + truck_weights[start+1] <= weight && start+1<truck_weights.length && !bridge.contains(truck_weights[start+1])) {
-        			start++;
-        			System.out.println("+++++++++ " + start);
-	    			bridge.offer(new Truck((truck_weights[start]),0));
-	    			now_weight += truck_weights[start];       			
+        		if(start+1<truck_total && now_weight + truck_weights[start+1] <= weight && bridge.size() < bridge_length) {     			
+        			Truck go =new Truck((truck_weights[++start]),1);
+	    			bridge.offer(go);
+	    			now_weight += go.t_weigth;       			
         		}
         	}
-        	System.out.println("00000000000000000" + bridge.peek().count);
-        	bridge.poll();
-        	now_weight -= truck_weights[start];  
-        	if(now_weight + truck_weights[start+1] <= weight && start+1<truck_weights.length) {
-    			start++;
-    			System.out.println("+++++++++ " + start);
-    			bridge.offer(new Truck((truck_weights[start]),0));
-    			now_weight += truck_weights[start];
-    			
-    		}
-        	      	
+        	Truck t = bridge.poll();
+        	now_weight -= t.t_weigth;  
+        	if(start+1<truck_total && now_weight + truck_weights[start+1] <= weight && bridge.size() < bridge_length) {   					
+    			Truck go =new Truck((truck_weights[++start]),1);
+    			bridge.offer(go);
+    			now_weight += go.t_weigth;        			
+    		}      	      	
         }
-        System.out.println("~8888888888888888888~" + total);
+        total++;
+        System.out.println("~~" + total);
         return total;
     }
 
