@@ -49,7 +49,7 @@ public class TravelRoot {
 					for(boolean a : visited) {
 						System.out.println(a + " ");
 					}
-//					System.out.println("-------------------------------------------");
+//					System.out.println("-----------------------------------------");
 					dfs(visited, tickets[i][1], path, tickets, index+1);
 					// 같은 방문지가 있는 경우, 다른 방문지를 돌기위해 false로 설정
 					visited[i] = false;
