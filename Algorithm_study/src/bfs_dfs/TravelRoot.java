@@ -1,103 +1,61 @@
 package bfs_dfs;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
+import java.util.Arrays;
+import java.util.Collections;
+
 
 public class TravelRoot {	
-		public static void main(String[] args) {
-			String[][] tickets = {{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "SFO"}, {"ATL","ICN"}};
-			new TravelRoot().solution(tickets);
-		}
-		
-	    public String solution(String[][] tickets) {
-	        StringBuffer  answer = new StringBuffer();
-	        int count = 0;
-	        int length = tickets.length + 1;
-	        boolean visit[] = new boolean [tickets.length];
+	static ArrayList<String> result = new ArrayList<String>();
+	 public static void main(String[] args) {
+	    	String[][] tickets = {{"ICN", "SFO"}, {"ICN", "ATL"}, {"SFO", "ATL"}, {"ATL", "ICN"}, {"ATL","SFO"}};
+	    	TravelRoot s = new TravelRoot();
+	    	s.solution(tickets);
+	    }
+	    
+	    public String[] solution(String[][] tickets) {
 
-	        Map<String[],Integer> airport = new HashMap<>();
-	        List<String[]>tmp = new ArrayList<>();
-	        Queue<String[]> que = new LinkedList<>();
+	        //방문경로를 저장하기위한 배열
+	        Boolean[] visited = new Boolean[tickets.length];
+	        Arrays.fill(visited, Boolean.FALSE);
 	        
-	        for(String[] a : tickets ){
-	        	airport.put(a, 0);
-	        	if(a[0] == "ICN") {
-	        		tmp.add(a);
-	        	}
-	        }
+	        //깊이탐색 시작
+	        dfs(visited, "ICN", "", tickets, 0);
 	        
-	        String[] min = tmp.get(0);
-	        if(tmp.size() == 1) que.offer(tmp.get(0));
-	        else {
-	        	
-	        	for(String[] a : tmp) {
-	        		if(a[1].compareTo(min[1]) < 0) {
-	        			min = a;
-	        		}
-	        	}
-	        }
+	        //알파벳순서로 가장 빠른 경로를 가져오기 위한 정렬
+	        //모든 경우의 수를 result에 저장되어 있으니 정렬 후 가장 앞에 있는 배열을 출력한다.
+	        Collections.sort(result);
 	        
-		       
-			airport.put(min, airport.getOrDefault(min, 0)+1);
-			que.offer(min);
+	        String[] answer = result.get(0).split(",");
+	        return answer;
+	    }
+	    
+	    static void dfs(Boolean[] visited, String station, String path, String[][] tickets, int index)  {
+			if("".equals(path)) {
+				path = station;
+			}else {
+				path = path + ","+ station;
+			}		
 			
-			for(String[] key : airport.keySet()) {
-				System.out.println("key:" + key[0]+","+key[1] + "values:" + airport.get(key));
+			if(index == tickets.length) {
+				result.add(path);
+				System.out.println("/////  " +result);
 			}
-	        	
-	        bfs(airport, count, length, answer,que);
-        	System.out.println("~~~" + answer);
-	        return answer.toString();
-	    }
-	    
-	    public void bfs( Map<String[],Integer> airport,int count, int length,StringBuffer answer,Queue<String[]> que) {
-	    	
-	    	while(!que.isEmpty()) {
-	    		
-	    		if(answer.length() < length) {
-	    			List<String[]>tmp1 = new ArrayList<>();
-	    			for(String[] a : que) {
-		    			System.out.println("que~~~" + a[0] + a[1]);
-		    		}
-	    			System.out.println("----");
-		    		String[] now = que.poll();
-		    		
-		    		
-		    		for(String[] key : airport.keySet()) {
-		    			if(key[0].equals(now[1]) && airport.get(key)==0) {
-		    				tmp1.add(key);
-		    			}
-		    		}
-		    		String[] min = tmp1.get(0);
-		    		if(tmp1.size() == 1) {
-		    			airport.put(tmp1.get(0), airport.getOrDefault(tmp1.get(0), 0)+1);
-		    			que.offer(tmp1.get(0));
-		    			answer.append(tmp1.get(0)[0]);
-		    		}
-			        else {
-			        	
-			        	for(String[] a : tmp1) {
-			        		if(a[1].compareTo(min[1]) < 0) {
-			        			min = a;
-			        		}
-			        	}
-			        	airport.put(min, airport.getOrDefault(min, 0)+1);
-			        	que.offer(min);
-			        	answer.append(min[0]);
-			        }
-		    		System.out.println("000" + answer);
-		    		
-	    		}
-	    		
-	    	}
-	    	
-	    }
-	    
-	    
-	
-
-}
+			
+			for(int i=0; i<tickets.length; i++) {
+	                        //사용하지 않은 티켓이고 가는 경로가 있을 경우
+				if(!visited[i] && tickets[i][0].equals(station)) {
+					visited[i] = true;
+					for(boolean a : visited) {
+						System.out.println(a + " ");
+					}
+//					System.out.println("-------------------------------------------");
+					dfs(visited, tickets[i][1], path, tickets, index+1);
+					// 같은 방문지가 있는 경우, 다른 방문지를 돌기위해 false로 설정
+					visited[i] = false;
+//					System.out.println("****** " + i + "     " + index);
+//					System.out.println("******" + result);
+				}
+			}
+		}
+	}
