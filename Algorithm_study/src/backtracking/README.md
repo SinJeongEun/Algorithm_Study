@@ -16,7 +16,7 @@
                   if(tmp.contains(num[i])) continue;
                   tmp.add(nums[i]);
                   backtrack(); //재귀적 호출
-                  tmp.remove(tmp.size()-1); // **********이 부분 정확한 이유 공부 후 설명 보충하기
+                  tmp.remove(tmp.size()-1); // ex) n=3,depth=3일 때 1-1-1 1-1-2  1-1-3 그리고 다시 1-2~ 를 방문하기 위해 tmp의 사이즈를 줄여서 상위 for문을 돌도록 하기 위함
               }
           }
       }
@@ -42,7 +42,7 @@
               for(int i=start;i<=nums;i++){
                   tmp.add(nums[i]);
                   backtrack(~,i+1); //다음 start 수를 +1로 지정 
-                  tmp.remove(tmp.size()-1); // **********이 부분 정확한 이유 공부 후 설명 보충하기
+                  tmp.remove(tmp.size()-1);
               }
           }
       }
