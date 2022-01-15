@@ -25,50 +25,62 @@ public class BestAlbum {
 		new BestAlbum().solution(genres, plays);
 	}
 	
-	public int[] solution(String[] genres, int[] plays) {
-        int[] answer = {};
+	public List<Integer> solution(String[] genres, int[] plays) {
+        List<Integer> answer = new ArrayList<>();
         Map<String,List<Inform>> map = new HashMap<>();
-        Map<Integer,String> _sort = new HashMap<>(); //수록곡이 가장 많은 장르순으로 정렬을 위함
+        Map<String,Integer> types = new HashMap<>();//수록곡이 가장 많은 장르순으로 정렬을 위함
         
         for(int i=0;i<genres.length;i++) {
-//        	System.out.println(i);
         	List<Inform> tmp = new ArrayList<>();
         	if(map.containsKey(genres[i])) {
         		tmp = map.get(genres[i]);
-        		tmp.add(new Inform(i,plays[i]));
+        		tmp.add(new Inform(i,plays[i]));  
+        		
         	}else tmp.add(new Inform(i,plays[i]));
         	
+        	//각 장르별 수록곡들 삽입
         	map.put(genres[i], tmp);
+        	
+        	//각 장르별 총 재생 횟수 삽입
+        	types.put(genres[i], types.getOrDefault(genres[i],0)+plays[i]);
         	
         }
                
-        for(String key : map.keySet()) {   
-        	int _size = map.get(key).size();
-        	_sort.put(_size, key);
-        	
+        for(String key : map.keySet()) {          	
         	//각 장르별 가장 많이 재생된 노래, 재생 수가 같은 경우 고유번호가 낮은 노래부터
         	Collections.sort(map.get(key),
-        			(a,b)-> a.plays == b.plays ? a.index - b.index : b.plays - a.plays);
+        			(a,b)-> a.plays == b.plays ? a.index - b.index : b.plays - a.plays);  
         	
-        	//가장 수록곡이 많은 장르순으로 정렬
-        	Collections.sort(_sort.get(key),(a,b)->b-a);
+        	//각 장르별 상위2곡만 남기기
+        	
         }
         
+        //재생 횟수가 가장 많은 장르순으로 정렬
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(types.entrySet());
+        Collections.sort(entries,(a,b) -> b.getValue()- a.getValue());
         
-        
+//        for(Map.Entry<String, Integer> entry : entries) {
+//        	System.out.println(entry.getKey() + " ~~~ "+ entry.getValue() );
+//        }
         
         //출력  *****수록곡이 가장 많은 key부터 출력하도록 구현하기!!!
-        for(String key : map.keySet()) {
-        	System.out.println(key + " : " );
-        	map.get(key)
-			.forEach((a) -> System.out.print(a.index + ", " + a.plays + "  "));
-        	System.out.println();
+        for(Map.Entry<String, Integer> entry : entries) {
+        	//테스트용 출력문
+//        	System.out.println(entry.getKey() + " : " );
+//        	map.get(entry.getKey())
+//			.forEach((a) -> System.out.print(a.index + ", " + a.plays + "  "));
+//        	System.out.println();
+        	
+        	//answer에 index 삽입
+        	map.get(entry.getKey())
+        	.stream()
+        	.limit(2)
+			.forEach((a) -> answer.add(a.index));
+               	
         }
         
-        
-        
-        
-        
+        System.out.print(answer);
+       
         return answer;
     }
 
