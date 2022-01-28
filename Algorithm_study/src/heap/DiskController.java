@@ -1,8 +1,10 @@
 package heap;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -53,21 +55,40 @@ public class DiskController {
 	        Queue<Job>que = new LinkedList<>();	       
 	        
 	        
+	        boolean check = false;
 	        
 	        while(!wait.isEmpty()) {
 	        	//대기 큐에서 계속 우선순위를 정렬해야 함. count가 어느정도 되면 실행순서가 가장 작은 순으로
-	        	que.offer(wait.poll());
-	        	System.out.println("~~~~~~~` ");
+	        	Job now = wait.poll();
+	        	que.offer(now);
+//	        	System.out.println("~~~~~~~ " + now.start + "  " + now.time);
 	        	while(!que.isEmpty()) {
-		        	Job now = que.peek();
-		        	if(count >= now.start) {
-		        		count -= now.start + now.time;
-		        		que.poll();
-		        		System.out.println("~~~~~~~` " + count);
+		        	Job now2 = que.peek();
+		        	System.out.println("~~~~~~~ " + now2.start + "  " + now2.time);
+		        	if(!check) {
+		        		
+		        		if(count <= now2.start) {
+		        			System.out.println("!!! ");
+////			        		Collections.sort(wait,new Comparator<Job>() {
+//			        			@Override
+//			    				public int compare(Job a, Job b) {
+//			        				if(a.time == b.time) return a.start - b.start;
+//			    					else return a.time - b.time;	
+//			        			}
+//			        			});		    			
+			        	}
+		        		check = true;
+		        		
+		        		for(Job a : wait) {
+		        			System.out.println("@@  " + a.start + " " + a.time);
+		        		}
+		        	}
+		        			        	
+	        		count -= now2.start + now2.time;		        	
+	        		que.poll();
+	        		System.out.println("~~~~~~~` " + count);
 		        	}	        
 		        }
-	        }
-	        
 	        
 	        System.out.println(count/jobs.length);
 	        
