@@ -1,100 +1,35 @@
-package heap;
+package com.company.algoritthm_study.Algorithm_study.Algorithm_study.src.heap;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.PriorityQueue;
-import java.util.Queue;
-
 
 public class DiskController {
-	
-	class Job{
-		 int start;
-		 int time;
-		
-		public Job(int start,int time) {
-			this.start = start;
-			this.time = time;
-		}		
-	}
 
-	public static void main(String[] args) {
-		int[][]jobs = {{0, 3},{1, 9}, {2, 6}};
-		new DiskController().solution(jobs);
+		public int solution(int[][] jobs) {
+			PriorityQueue<int[]> q = new PriorityQueue<>((o1, o2) -> o1[1] - o2[1]); //ì²˜ë¦¬ì‹œê°„ ìˆœì„œëŒ€ë¡œ
+			Arrays.sort(jobs, (o1, o2) -> o1[0] - o2[0]); //ì‹œì‘ì‹œê°„ ìˆœì„œëŒ€ë¡œ
 
-	}
-	
-	 public int solution(int[][] jobs) {
-	        int answer = 0;
-	        int count = 0;
-	        //¿äÃ»½Ã°£ ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
-	        Arrays.sort(jobs,(a,b)->a[0]==b[0]?a[1]-b[1] : a[0]-b[0]);
-	        
-//	        for(int[] a : jobs)System.out.println(a[0] + " " + a[1]);
-	       	        
-	        //´ë±â Å¥
-	        Queue<Job> wait = new PriorityQueue<>( new Comparator<Job>(){
-				@Override
-				public int compare(Job a, Job b) {
-					if(a.start == b.start) return a.time - b.time;
-					else return a.start - b.start;			
+			int answer = 0;
+			int current = 0; //í˜„ì¬ ì‹œê°„
+			int i = 0;
+			while (i < jobs.length || !q.isEmpty()) {
+				while (i < jobs.length && jobs[i][0] <= current) {
+					q.add(new int[]{jobs[i][0], jobs[i][1]});
+					i++;
 				}
-			});
-	        
-	        for(int[] a : jobs) {
-//	        	System.out.println(a[0] + " " + a[1]);
-	        	Job job = new Job(a[0],a[1]);
-	        	wait.offer(job);
-	        }
-	        
-	        
-	        //½ÇÇà Å¥
-	        Queue<Job>que = new LinkedList<>();	       
-	        
-	        
-	        boolean check = false;
-	        
-	        while(!wait.isEmpty()) {
-	        	//´ë±â Å¥¿¡¼­ °è¼Ó ¿ì¼±¼øÀ§¸¦ Á¤·ÄÇØ¾ß ÇÔ. count°¡ ¾î´ÀÁ¤µµ µÇ¸é ½ÇÇà¼ø¼­°¡ °¡Àå ÀÛÀº ¼øÀ¸·Î
-	        	Job now = wait.poll();
-	        	que.offer(now);
-//	        	System.out.println("~~~~~~~ " + now.start + "  " + now.time);
-	        	while(!que.isEmpty()) {
-		        	Job now2 = que.peek();
-		        	System.out.println("~~~~~~~ " + now2.start + "  " + now2.time);
-		        	if(!check) {
-		        		
-		        		if(count <= now2.start) {
-		        			System.out.println("!!! ");
-////			        		Collections.sort(wait,new Comparator<Job>() {
-//			        			@Override
-//			    				public int compare(Job a, Job b) {
-//			        				if(a.time == b.time) return a.start - b.start;
-//			    					else return a.time - b.time;	
-//			        			}
-//			        			});		    			
-			        	}
-		        		check = true;
-		        		
-		        		for(Job a : wait) {
-		        			System.out.println("@@  " + a.start + " " + a.time);
-		        		}
-		        	}
-		        			        	
-	        		count -= now2.start + now2.time;		        	
-	        		que.poll();
-	        		System.out.println("~~~~~~~` " + count);
-		        	}	        
-		        }
-	        
-	        System.out.println(count/jobs.length);
-	        
-	        return answer;
-	    }
 
-	
+				if (q.isEmpty()) { //íê°€ ë¹„ì–´ìˆë‹¤. -> í˜„ì¬ ì‹¤í–‰í•  ìˆ˜ ìˆëŠ” ì‘ì—…ì´ ì—†ë‹¤.
+					current = jobs[i][0]; //ë‹¤ìŒ ì‘ì—…ì˜ ì‹œì‘ì‹œê°„ìœ¼ë¡œ ì´ë™í•œë‹¤.
+				} else {
+					int[] temp = q.poll();
+					answer += current + temp[1] - temp[0]; //ìš”ì²­ ~ ì¢…ë£Œì‹œê°„
+					System.out.println(current + " " + temp[0] + " " + temp[1]);
+					current += temp[1];
+				}
+			}
+			return answer / jobs.length;
+
+		}
 
 }
+
