@@ -22,3 +22,11 @@
 
 - ## Binary Search  시간 복잡도 (O(logn))
 
+- ### Array -> List
+  - Arrays.asList()
+  - new ArrayList<>(Arrays.asList())
+  - Collectors.toList()
+
+
+- ### List -> Array 
+ - toArray() - java.util.List
