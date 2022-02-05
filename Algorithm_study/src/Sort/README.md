@@ -22,6 +22,11 @@
 
 - ## Binary Search  시간 복잡도 (O(logn))
 
+
+- ### Array
+  - Arrays.sort();   
+  - Arrays.sort(arr,Collections.reverseOrder());
+- ###List
 - ### Array -> List
   - Arrays.asList()
   - new ArrayList<>(Arrays.asList())
