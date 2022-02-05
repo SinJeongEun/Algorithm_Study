@@ -20,6 +20,11 @@
               }
           }
       }
+      ```
+      
+  + 추가
+    - 방문체크를 위한 visited 나 조합을 저장하는 tmp(or sb)는 꼭 재귀적 호출 뒤에만 작성해야됨, ( if(tmp.size() == nums.length)  안에 작성해도 안됨!!!)
+      - [**위의 코드가 포함 된 코드 링크**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/%ED%83%90%EC%83%89/FindPrimeNumber.java)
     
 
 
