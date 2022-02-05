@@ -17,7 +17,8 @@ public class SubArraySumMap {
 		int sum = 0;
 		
 		Map<Integer,Integer> map = new HashMap<>();
-		map.put(0, 1);
+		map.put(0, 1); //시작 점을 만든다 ** map의 key가 배열의 합이자,sum-7의 값의 key가 있어야 sub배열의 합이 7임이 증몀됨 -> count++
+											// 0인 key가 있어야 gndp 7-7 일 때도 count++이 가능해 짐 
 		
 		for(int i=0;i<nums.length;i++) {
 			sum += nums[i];
