@@ -13,3 +13,8 @@
             = new PriorityQueue<Integer>(
                 Collections.reverseOrder());
     ```
+- [**Queue -> List 정렬**](https://github.com/SinJeongEun/Algorithm_study/blob/master/Algorithm_study/src/heap/DualPriorityQueue.java)
+  - ```
+  - List<>tmp = que.stream().collect(Collectors.toList());  //List 로 변환
+      Collections.sort(tmp);
+    ```
