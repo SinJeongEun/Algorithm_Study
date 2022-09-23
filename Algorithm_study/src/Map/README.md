@@ -49,6 +49,11 @@
        ```
         - ch가 존재하면 ch의 기존값을 가져온다.
         - ch가 존재하지 않으면 0을 가져온다.
+  - Map 키,값 정렬하기
+    + ```java
+      List<Map.Entry<String, Integer>> entries = new LinkedList<>(types.entrySet());
+        Collections.sort(entries,(a,b) -> b.getValue()- a.getValue());
+      ```
 
         
 
