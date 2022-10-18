@@ -39,7 +39,7 @@
         Iterator<String> keys = map.keySet().iterator();
         while(keys.hasNext()){
         	String key = keys.next();
-        	Systemm.out.println("key:" + key + "value:" + 				map.get(key));
+        	Systemm.out.println("key:" + key + "value:" + map.get(key));
         }
         ```
   - 함수
