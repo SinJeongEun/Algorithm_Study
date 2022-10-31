@@ -27,7 +27,7 @@
             = new PriorityQueue<Integer>(
                 Collections.reverseOrder());
     ```
-- ## Binary Search  시간 복잡도 (O(logn))
+- ## Binary Search 시간 복잡도 (O(logn))
 
 - ### Array
   - Arrays.sort();   
